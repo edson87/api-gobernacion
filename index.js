@@ -115,7 +115,6 @@ app.get("/allLogins", (req, res) => {
     let sql = "CREATE TABLE inscripcion(id int AUTO_INCREMENT, codigo VARCHAR(100), solicitante VARCHAR(100), ci VARCHAR(100), direccion VARCHAR(100), zona VARCHAR(500), municipio VARCHAR(100), celular int, telefono int, fax int, email VARCHAR(100), nombreEmpresa VARCHAR(100), direccionEmpresa VARCHAR(100), zonaEmpresa VARCHAR(100), municipioEmpresa VARCHAR(100), antiguedad int, mumOperadores int,  varones int, mujeres int, actividadPrincipal VARCHAR(100),  fechaInscripcion DATE, licenciaAlcaldia VARCHAR(100), senasag VARCHAR(100), afp VARCHAR(100), cajaSalud VARCHAR(100), nit VARCHAR(100), ninguno VARCHAR(100), fundaempresa VARCHAR(100), otros VARCHAR(100), aperturaMercado VARCHAR(100), apolloServFinanciero VARCHAR(100), capaciAsistenciaTecni VARCHAR(100), PRIMARY KEY (id))";
     db.query(sql, (err, result) => {
         if(err) throw err;
-        console.log(result);
         res.send('Table created...!');
     });
 
