@@ -123,7 +123,8 @@ app.get("/allLogins", (req, res) => {
 app.post("/insertarInscripciones", (req, res) => {
 	
 	let post = {codigo:req.body.codigo,solicitante:req.body.solicitante,ci:req.body.ci,direccion:req.body.direccion,zona: req.body.zona,municipio:req.body.municipio,
-		celular:req.body.celular,telefono:req.body.telefono,fax:req.body.fax,email:req.body.email,nombreEmpresa:req.body.nombreEmpresa,direccionEmpresa:req.body.direccionEmpresa,
+		celular:req.body.celular,telefono:req.body.telefono,fax:req.body.fax,email:req.body.email,nombreEmpresa:req.body.nombreEmpresa,sociedad:req.body.sociedad,
+		nombreSociedad:req.body.nombreSociedad,direccionEmpresa:req.body.direccionEmpresa,
 		zonaEmpresa:req.body.zonaEmpresa,municipioEmpresa:req.body.municipioEmpresa,antiguedad:req.body.antiguedad,actividadPrincipal:req.body.actividadPrincipal,
 		descripcionActividad:req.body.descripcionActividad,cantidadProducida:req.body.cantidadProducida,
 		numOperadores:req.body.numOperarios,varones:req.body.varones,mujeres:req.body.mujeres,fechaInscripcion:req.body.fechaInscripcion,licenciaAlcaldia:req.body.licenciaAlcaldia,
@@ -137,16 +138,52 @@ app.post("/insertarInscripciones", (req, res) => {
 		if(err){ 
 			throw err;
 		}	
+		console.log(result);
 		res.send(result);
 	})
 });
 
-app.get("/searchByCode/:id", (req, res) => {
-	let sql = `SELECT * FROM inscripcion WHERE codigo = '${req.params.id}'`;
+app.put("/actualizarInscripcion", (req, res) => {
+	//console.log(req.body.codigo);
+	
+	let post = {codigo:req.body.codigo,solicitante:req.body.solicitante,ci:req.body.ci,direccion:req.body.direccion,zona: req.body.zona,municipio:req.body.municipio,
+		celular:req.body.celular,telefono:req.body.telefono,fax:req.body.fax,email:req.body.email,nombreEmpresa:req.body.nombreEmpresa,sociedad:req.body.sociedad,
+		nombreSociedad:req.body.nombreSociedad,direccionEmpresa:req.body.direccionEmpresa,
+		zonaEmpresa:req.body.zonaEmpresa,municipioEmpresa:req.body.municipioEmpresa,antiguedad:req.body.antiguedad,actividadPrincipal:req.body.actividadPrincipal,
+		descripcionActividad:req.body.descripcionActividad,cantidadProducida:req.body.cantidadProducida,
+		numOperadores:req.body.numOperarios,varones:req.body.varones,mujeres:req.body.mujeres,fechaInscripcion:req.body.fechaInscripcion,licenciaAlcaldia:req.body.licenciaAlcaldia,
+		senasag:req.body.senasag,afp:req.body.afp,cajaSalud:req.body.cajaSalud,nit:req.body.nit,senapi:req.body.senapi,ninguno:req.body.ninguno,fundaempresa:req.body.fundaempresa,
+		otros:req.body.otros,norma:req.body.norma,detalleNorma:req.body.detalleNorma,aperturaMercado:req.body.aperturaMercado,apolloServFinanciero:req.body.apolloServiciosFinancieron,
+		capaciAsistenciaTecni:req.body.capacitacionAsistenciaTecnica
+	}
+
+	let sql = `UPDATE inscripcion SET ? WHERE codigo = '${req.body.codigo}' `;
+	let query = db.query(sql, post, (err, result) => {
+		if(err){ 
+			throw err;
+		}	
+		console.log(result);
+		res.send(result);
+	})
+});
+
+app.get("/searchAllNames", (req, res) => {
+	let sql = `SELECT solicitante FROM inscripcion `;
 	let query = db.query(sql, (err, result) => {
 			if(err){
 				throw err;
 			}
+			res.send(result);
+	})	
+});
+
+app.get("/searchByName/:id", (req, res) => {
+	let sql = `SELECT * FROM inscripcion WHERE solicitante = '${req.params.id}'`;
+	let query = db.query(sql, (err, result) => {
+			if(err){
+				throw err;
+			}
+			console.log(result)
 			res.send(result);
 	})	
 });
