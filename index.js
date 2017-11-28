@@ -229,6 +229,48 @@ app.get("/searchItem/:id", (req, res) => {
 	})	
 });
 
+//Consultas para base de datos componentes
+app.post("/ingresarComponente", (req, res) => {
+	//console.log(req.body.codigo);
+	
+	let post = {codigo:req.body.codigo,solicitante:req.body.solicitante,actividadPrincipal:req.body.actividadPrincipal,componente1:req.body.componente1,
+		ferias:req.body.ferias,finFeriaFecha:req.body.finFeriaFecha,relacionesComerciales:req.body.relacionesComerciales,finRelaComerFecha:req.body.finRelaComerFecha,
+		promoVentasProdu:req.body.promoVentasProdu,finPromoVentasFecha:req.body.finPromoVentasFecha,componente2: req.body.componente2,estadoCompo2:req.body.estadoComponente2,
+		fechaCompo2:req.body.fechaComponente2,componente3:req.body.componente3,estadoCompo3:req.body.estadoComponente3,
+		fechaCompo3:req.body.fechaComponente3,nombreEmpresa:req.body.nombreEmpresa,municipio:req.body.municipio
+	}
+
+	let sql = `INSERT INTO componente SET ?`;
+	let query = db.query(sql, post, (err, result) => {
+		if(err){ 
+			throw err;
+		}	
+		console.log(result);
+		res.send(result);
+	})
+});
+
+
+app.get("/showComponenteUno",(req, res)=>{
+	let sql = `SELECT * FROM componente WHERE componente1 != 0`;
+	let query = db.query(sql, (err, result) => {
+			if(err){
+				throw err;
+			}
+			res.send(result);
+	})	
+})
+
+app.get("/mostrarUnComponente/:id",(req,res)=>{
+	let sql = `SELECT * FROM componente WHERE id = ${req.params.id}`;
+	let query = db.query(sql, (err, result) => {
+			if(err){
+				throw err;
+			}
+			res.send(result);
+	})	
+})
+
 app.listen('3000', () => {
     console.log('The server is running on port 3000');
 });
