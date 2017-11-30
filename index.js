@@ -239,9 +239,18 @@ app.post("/ingresarComponente", (req, res) => {
 		tallerEducativoFinaciero:req.body.tallerEducativoFinaciero,fechaConclucionTaller:req.body.fechaConclucionTaller,informacionCrediticia:req.body.informacionCrediticia,
 		fechaConclucionInforma:req.body.fechaConclucionInforma,asesoramientoSeguimiento:req.body.asesoramientoSeguimiento,fechaConclucionAsesor:req.body,
 		monto:req.body.monto,entidadFinanciera:req.body.entidadFinanciera,observaciones:req.body.observaciones,
-		componente3:req.body.componente3,estadoCompo3:req.body.estadoComponente3,fechaCompo3:req.body.fechaComponente3,nombreEmpresa:req.body.nombreEmpresa,
-		municipio:req.body.municipio
-	}
+		componente3:req.body.componente3,formacionAcademica:req.body.formacionAcademica,cantidadCursosRealizados:req.body.cantidadCursosRealizados,
+		costos:req.body.costos,	marketing:req.body.marketing,administracion:req.body.administracion,planNegocios:req.body.planNegocios,	certificados:req.body.certificados,
+		excel:req.body.excel,word:req.body.word,powerPoint:req.body.powerPoint,otros:req.body.otros,SolicitudCursos:req.body.SolicitudCursos,
+		fechaRealizada:req.body.fechaRealizada,
+		licenciaAlcaldia:req.body.licenciaAlcaldia,
+		senasag:this.req.body.senasag,
+		afp:req.body.afp,
+		cajaSalud:req.body.cajaSalud,
+		nit:req.body.nit,
+		senapi:req.body.senapi,
+		ministerioTrabajo:req.body.ministerioTrabajo,
+		nombreEmpresa:req.body.nombreEmpresa,municipio:req.body.municipio}
 
 	let sql = `INSERT INTO componente SET ?`;
 	let query = db.query(sql, post, (err, result) => {
@@ -274,6 +283,16 @@ app.get("/showComponenteDos",(req, res)=>{
 	})	
 })
 
+app.get("/showComponenteTres",(req, res)=>{
+	let sql = `SELECT * FROM componente WHERE componente3 != 0`;
+	let query = db.query(sql, (err, result) => {
+		if(err){
+			throw err;
+		}
+		res.send(result);
+	})	
+})
+
 app.get("/mostrarUnComponente/:id",(req,res)=>{
 	let sql = `SELECT * FROM componente WHERE id = ${req.params.id}`;
 	let query = db.query(sql, (err, result) => {
@@ -293,8 +312,18 @@ app.put("/actualizarUnComponente", (req, res) => {
 		tallerEducativoFinaciero:req.body.tallerEducativoFinaciero,fechaConclucionTaller:req.body.fechaConclucionTaller,informacionCrediticia:req.body.informacionCrediticia,
 		fechaConclucionInforma:req.body.fechaConclucionInforma,asesoramientoSeguimiento:req.body.asesoramientoSeguimiento,fechaConclucionAsesor:req.body,
 		monto:req.body.monto,entidadFinanciera:req.body.entidadFinanciera,observaciones:req.body.observaciones,
-		componente3:req.body.componente3,estadoCompo3:req.body.estadoComponente3,fechaCompo3:req.body.fechaComponente3,nombreEmpresa:req.body.nombreEmpresa,
-		municipio:req.body.municipio}
+		componente3:req.body.componente3,formacionAcademica:req.body.formacionAcademica,cantidadCursosRealizados:req.body.cantidadCursosRealizados,
+		costos:req.body.costos,	marketing:req.body.marketing,administracion:req.body.administracion,planNegocios:req.body.planNegocios,	certificados:req.body.certificados,
+		excel:req.body.excel,word:req.body.word,powerPoint:req.body.powerPoint,otros:req.body.otros,SolicitudCursos:req.body.SolicitudCursos,
+		fechaRealizada:req.body.fechaRealizada,
+		licenciaAlcaldia:req.body.licenciaAlcaldia,
+		senasag:req.body.senasag,
+		afp:req.body.afp,
+		cajaSalud:req.body.cajaSalud,
+		nit:req.body.nit,
+		senapi:req.body.senapi,
+		ministerioTrabajo:req.body.ministerioTrabajo,
+		nombreEmpresa:req.body.nombreEmpresa,municipio:req.body.municipio}
 
 	let sql = `UPDATE componente SET ? WHERE codigo = '${req.body.codigo}' `;
 	let query = db.query(sql, post, (err, result) => {
@@ -306,7 +335,18 @@ app.put("/actualizarUnComponente", (req, res) => {
 	})
 });
 
+app.get("/mostrarFormalizacion",(req,res)=>{
+	let sql = `SELECT * FROM  inscripcion,componente WHERE componente.codigo = inscripcion.codigo`;
+	let query = db.query(sql, (err, result) => {
+			if(err){
+				throw err;
+			}
+			res.send(result);
+	})	
+})
+
 app.listen('3000', () => {
     console.log('The server is running on port 3000');
 });
 
+//SELECT * FROM  inscripcion,componente   WHERE  inscripcion.codigo = '2015-14' AND componente.codigo = inscripcion.codigo
