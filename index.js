@@ -243,8 +243,9 @@ app.post("/ingresarComponente", (req, res) => {
 		costos:req.body.costos,	marketing:req.body.marketing,administracion:req.body.administracion,planNegocios:req.body.planNegocios,	certificados:req.body.certificados,
 		excel:req.body.excel,word:req.body.word,powerPoint:req.body.powerPoint,otros:req.body.otros,SolicitudCursos:req.body.SolicitudCursos,
 		fechaRealizada:req.body.fechaRealizada,
+		fundaempresa:req.body.fundaempresa,
 		licenciaAlcaldia:req.body.licenciaAlcaldia,
-		senasag:this.req.body.senasag,
+		senasag:req.body.senasag,
 		afp:req.body.afp,
 		cajaSalud:req.body.cajaSalud,
 		nit:req.body.nit,
@@ -344,6 +345,36 @@ app.get("/mostrarFormalizacion",(req,res)=>{
 			res.send(result);
 	})	
 })
+
+app.delete("/deleteComponenteItem/:id", (req, res) => {
+	let sql = `DELETE FROM componente WHERE id = '${req.params.id}'`;
+	let query = db.query(sql, (err, result) => {
+			if(err){
+				throw err;
+			}
+			res.send(result);
+	})	
+});
+
+app.put("/actualizarInscripcionEditadas", (req, res) => {
+	//console.log(req.body.codigo);
+	
+	let post = {codigo:req.body.codigo, solicitante:req.body.solicitante,actividadPrincipal:req.body.actividadPrincipal,
+		municipio:req.body.municipio,nombreEmpresa:req.body.nombreEmpresa,
+		componente1:req.body.componente1,componente2:req.body.componente2,componente3:req.body.componente3,          
+		licenciaAlcaldia:req.body.licenciaAlcaldia,fundaempresa:req.body.fundaempresa,nit:req.body.nit,
+		senasag:req.body.senasag,afp:req.body.afp,senapi:req.body.senapi,cajaSalud:req.body.cajaSalud
+	}
+
+	let sql = `UPDATE componente SET ? WHERE codigo = '${req.body.codigo}' `;
+	let query = db.query(sql, post, (err, result) => {
+		if(err){ 
+			throw err;
+		}	
+		//console.log(result);
+		res.send(result);
+	})
+});
 
 app.listen('3000', () => {
     console.log('The server is running on port 3000');
