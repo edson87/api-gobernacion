@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2017 a las 23:02:54
+-- Tiempo de generación: 04-12-2017 a las 21:07:49
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -66,6 +66,7 @@ CREATE TABLE `componente` (
   `otros` varchar(100) DEFAULT NULL,
   `SolicitudCursos` varchar(100) DEFAULT NULL,
   `fechaRealizada` date DEFAULT NULL,
+  `fundaempresa` tinyint(1) DEFAULT NULL,
   `licenciaAlcaldia` tinyint(1) DEFAULT NULL,
   `senasag` tinyint(1) DEFAULT NULL,
   `afp` tinyint(1) DEFAULT NULL,
@@ -81,15 +82,16 @@ CREATE TABLE `componente` (
 -- Volcado de datos para la tabla `componente`
 --
 
-INSERT INTO `componente` (`id`, `codigo`, `solicitante`, `actividadPrincipal`, `componente1`, `ferias`, `feriaMontoVenta`, `montoFeria`, `ventaConsolidada`, `intencionVenta`, `finFeriaFecha`, `relacionesComerciales`, `finRelaComerFecha`, `promoVentasProdu`, `finPromoVentasFecha`, `componente2`, `tallerEducativoFinaciero`, `fechaConclucionTaller`, `informacionCrediticia`, `fechaConclucionInforma`, `asesoramientoSeguimiento`, `fechaConclucionAsesor`, `monto`, `entidadFinanciera`, `observaciones`, `componente3`, `formacionAcademica`, `cantidadCursosRealizados`, `costos`, `marketing`, `administracion`, `planNegocios`, `certificados`, `excel`, `word`, `powerPoint`, `otros`, `SolicitudCursos`, `fechaRealizada`, `licenciaAlcaldia`, `senasag`, `afp`, `cajaSalud`, `nit`, `senapi`, `ministerioTrabajo`, `nombreEmpresa`, `municipio`) VALUES
-(4, 'cp003', 'Juan', 'textil', 1, 'expo santivañes', 'si', 0, 0, 0, '0000-00-00', 'si', '0000-00-00', 'si', '0000-00-00', 1, NULL, NULL, NULL, NULL, 'si', '0000-00-00', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'DECO', NULL),
-(5, 'cp006', 'Juan', 'textil', 1, 'no', 'no', NULL, NULL, NULL, '0000-00-00', 'no', '0000-00-00', 'si', '0000-00-00', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'DECO', NULL),
-(6, 'cp004', 'Juan', 'textil', 1, 'no', 'no', NULL, NULL, NULL, '0000-00-00', 'no', '0000-00-00', 'si', '0000-00-00', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'DECO', NULL),
-(7, 'cp005', 'Alejando', NULL, NULL, '', NULL, NULL, NULL, NULL, '0000-00-00', '', '0000-00-00', '', '0000-00-00', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, '2016-5', 'Mario', 'madera', 1, 'si', NULL, NULL, NULL, NULL, '0000-00-00', 'no', '0000-00-00', 'si', '0000-00-00', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNO', 'Cochabamba'),
-(9, '2015-12', 'Mercedes  Palma', 'cuero', NULL, 'no realizado', NULL, NULL, NULL, NULL, '2017-11-15', 'no realizado', '2017-11-15', 'no realizado', '2017-11-15', 1, 'no', '2017-11-15', 'no', '2017-11-15', 'no', '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, '2015-13', 'Marco ', NULL, NULL, 'no realizado', NULL, 0, 0, 0, '2015-08-03', 'no realizado', '2015-08-03', 'no realizado', '2015-08-03', 1, 'si', '2015-07-24', 'no', '2015-08-03', 'si', '0000-00-00', 1000, '', 'aprovado', 1, 'secundaria', 3, '1', '', '', NULL, 'xxxx', NULL, '1', NULL, '', 'Cursos de administracion', '2017-10-30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'None', 'Vinto'),
-(11, '2015-14', 'Ulivares Edson', 'cuero', 1, 'no realizado', 'no', 0, 0, 0, '2017-11-28', 'no realizado', '2017-11-28', 'no realizado', '2017-11-28', 1, 'no', '2017-11-28', 'no', '2017-11-28', 'no', '0000-00-00', 0, '', '', 1, '', 0, 'no', 'no', 'no', 'no', '', 'no', 'no', 'no', '', '', '2017-11-28', 1, 1, 1, NULL, NULL, NULL, 1, 'INCA', 'Sacaba');
+INSERT INTO `componente` (`id`, `codigo`, `solicitante`, `actividadPrincipal`, `componente1`, `ferias`, `feriaMontoVenta`, `montoFeria`, `ventaConsolidada`, `intencionVenta`, `finFeriaFecha`, `relacionesComerciales`, `finRelaComerFecha`, `promoVentasProdu`, `finPromoVentasFecha`, `componente2`, `tallerEducativoFinaciero`, `fechaConclucionTaller`, `informacionCrediticia`, `fechaConclucionInforma`, `asesoramientoSeguimiento`, `fechaConclucionAsesor`, `monto`, `entidadFinanciera`, `observaciones`, `componente3`, `formacionAcademica`, `cantidadCursosRealizados`, `costos`, `marketing`, `administracion`, `planNegocios`, `certificados`, `excel`, `word`, `powerPoint`, `otros`, `SolicitudCursos`, `fechaRealizada`, `fundaempresa`, `licenciaAlcaldia`, `senasag`, `afp`, `cajaSalud`, `nit`, `senapi`, `ministerioTrabajo`, `nombreEmpresa`, `municipio`) VALUES
+(5, 'cp004', 'Juan b', 'textil', 1, 'no', 'no', NULL, NULL, NULL, '0000-00-00', 'no', '0000-00-00', 'si', '0000-00-00', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'DECO', NULL),
+(6, 'cp005', 'Juan', 'textil', 1, 'no', 'no', NULL, NULL, NULL, '0000-00-00', 'no', '0000-00-00', 'si', '0000-00-00', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'DECO', NULL),
+(7, 'cp006', 'Alejando', NULL, NULL, '', NULL, NULL, NULL, NULL, '0000-00-00', '', '0000-00-00', '', '0000-00-00', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, '2016-5', 'Mario', 'madera', 1, 'si', NULL, NULL, NULL, NULL, '0000-00-00', 'no', '0000-00-00', 'si', '0000-00-00', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNO', 'Cochabamba'),
+(9, '2015-12', 'Mercedes  Palma', 'cuero', NULL, 'no realizado', NULL, NULL, NULL, NULL, '2017-11-15', 'no realizado', '2017-11-15', 'no realizado', '2017-11-15', 1, 'no', '2017-11-15', 'no', '2017-11-15', 'no', '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, '2015-13', 'Marco ', NULL, NULL, 'no realizado', NULL, 0, 0, 0, '2015-08-03', 'no realizado', '2015-08-03', 'no realizado', '2015-08-03', 1, 'si', '2015-07-24', 'no', '2015-08-03', 'si', '0000-00-00', 1000, '', 'aprovado', 1, 'secundaria', 3, '1', '', '', NULL, 'xxxx', NULL, '1', NULL, '', 'Cursos de administracion', '2017-10-30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'None', 'Vinto'),
+(11, '2015-14', 'Ulivares Edson', 'cuero', 1, 'no realizado', 'no', 0, 0, 0, '2017-11-28', 'no realizado', '2017-11-28', 'no realizado', '2017-11-28', 1, 'no', '2017-11-28', 'no', '2017-11-28', 'no', '0000-00-00', 0, '', '', 1, '', 0, 'no', 'no', 'no', 'no', '', 'no', 'no', 'no', '', '', '2017-11-28', NULL, 1, 1, 1, NULL, NULL, NULL, 1, 'INCA', 'Sacaba'),
+(12, '2018-18', 'Ivan Pardo', 'cuero', 1, 'no realizado', 'no', 0, 0, 0, '2017-12-18', 'no realizado', '2017-12-18', 'no realizado', '2017-12-18', 1, 'no', '2017-12-18', 'no', '2017-12-18', 'no', '0000-00-00', 0, '', '', 1, '', 0, 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', '', '', '2017-12-18', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0, 'INDA', 'Cochabamba'),
+(13, '2015-19', 'Alberto soliz', 'madera', 1, 'no realizado', 'no', 0, 0, 0, '2017-12-20', 'no realizado', '2017-12-20', 'no realizado', '2017-12-20', 1, 'no', '2017-12-20', 'no', '2017-12-20', 'no', '0000-00-00', 0, '', '', 1, '', 0, 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', '', '', '2017-12-20', 1, NULL, 1, 1, 1, NULL, 1, 0, 'UDE', 'Tiquipaya');
 
 -- --------------------------------------------------------
 
@@ -152,13 +154,16 @@ INSERT INTO `inscripcion` (`id`, `codigo`, `solicitante`, `ci`, `direccion`, `zo
 (25, '2015-6', 'Giovani Santiago Guno', '12712450', 'Javinto Avaya 1842 3 cuadras aranjues sobre la av circunvalacion', 'tupuraya', NULL, 67407451, 4483131, NULL, 'elmanobolivia@hotmail.com', 'Laboratorio El Mana', NULL, NULL, NULL, NULL, NULL, '10 aÃ±o', 5, 1, 4, 'alimentos', 'Elaboracion de cereales', NULL, '2015-10-25', 1, 1, 1, 1, 1, NULL, NULL, 1, NULL, 'no', NULL, 1, NULL, 1),
 (26, '2015-7', 'Fredy Espinoza', '3794447', 'Arquimides esq. Pavon', 'Chimba', NULL, 70726950, 4447046, NULL, 'taquelita_ortuno@gmail.com', 'YUCATA', NULL, NULL, NULL, NULL, NULL, '2 meses', 1, 1, NULL, 'madera', 'carpinteria', NULL, '2015-12-23', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, 'no', NULL, 1, NULL, 1),
 (27, '2015-8', 'Guida Jasquez de la Barra de Colque', '666217', 'Av. simon lopez entre av. colquiri #284', 'norte', 'Cochabamba', NULL, 4287037, NULL, NULL, 'AYNI-WARMIS', NULL, NULL, NULL, NULL, NULL, '5 anos', 4, 1, 3, 'textil', 'tejido con lana de alpaca 100%', NULL, '2015-10-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'cadepia', 'no', NULL, 1, NULL, 1),
-(34, 'cp003', 'Juan', '5280036', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'DECO', 'Unipersonal', NULL, NULL, NULL, 'Villarroel', NULL, NULL, NULL, NULL, 'textil', NULL, NULL, '2017-11-27', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1),
-(35, 'cp003', 'Juan', '5280036', NULL, NULL, 'Entre Rios', NULL, NULL, NULL, NULL, 'DECO', 'Unipersonal', NULL, NULL, NULL, 'Villarroel', NULL, NULL, NULL, NULL, 'textil', NULL, NULL, '2017-11-27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1),
-(36, 'cp003', 'Juan', '5280036', NULL, NULL, 'Entre Rios', NULL, NULL, NULL, NULL, 'DECO', 'Unipersonal', NULL, NULL, NULL, 'Villarroel', NULL, NULL, NULL, NULL, 'textil', NULL, NULL, '2017-11-27', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1),
-(37, 'cp005', 'Alejando', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-11-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(35, 'cp004', 'Juan b', '5280036', NULL, NULL, 'Entre Rios', NULL, NULL, NULL, NULL, 'DECO', 'Unipersonal', NULL, NULL, NULL, 'Villarroel', NULL, NULL, NULL, NULL, 'textil', NULL, NULL, '2017-11-27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1),
+(36, 'cp005', 'Juan', '5280036', NULL, NULL, 'Entre Rios', NULL, NULL, NULL, NULL, 'DECO', 'Unipersonal', NULL, NULL, NULL, 'Villarroel', NULL, NULL, NULL, NULL, 'textil', NULL, NULL, '2017-11-27', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1),
+(37, 'cp006', 'Alejando', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-11-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
 (38, '2015-12', 'Mercedes  Palma', '528806', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Colcapirhua', NULL, NULL, NULL, NULL, 'cuero', NULL, NULL, '2017-11-15', NULL, 1, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
 (39, '2015-13', 'Marco ', NULL, NULL, NULL, 'Vinto', NULL, NULL, NULL, NULL, 'None', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-08-16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
-(40, '2015-14', 'Ulivares Edson', '5280036', 'pacata', NULL, 'Sacaba', NULL, NULL, NULL, NULL, 'INCA', 'Asoc. Productiva', '1 de noviembre', NULL, NULL, 'Cochabamba', '2', 2, 2, NULL, 'cuero', 'secado de cuero', NULL, '2017-11-30', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', NULL, 1, 1, 1);
+(40, '2015-14', 'Ulivares Edson', '5280036', 'pacata', NULL, 'Sacaba', NULL, NULL, NULL, NULL, 'INCA', 'Asoc. Productiva', '1 de noviembre', NULL, NULL, 'Cochabamba', '2', 2, 2, NULL, 'cuero', 'secado de cuero', NULL, '2017-11-30', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', NULL, 1, 1, 1),
+(41, '2015-18', 'Luis alverto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-19', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, 1, 1),
+(42, '2015-18', 'Amparo', '354871', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Vinto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-19', 1, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1),
+(43, '2018-18', 'Ivan Pardo', '5212345', NULL, NULL, 'Cochabamba', NULL, NULL, NULL, NULL, 'INDA', NULL, NULL, NULL, NULL, 'Totora', NULL, NULL, NULL, NULL, 'cuero', NULL, NULL, '2017-12-18', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1),
+(44, '2015-19', 'Alberto soliz', '5645654', NULL, NULL, 'Tiquipaya', NULL, NULL, NULL, NULL, 'UDE', NULL, NULL, NULL, NULL, 'Cochabamba', NULL, NULL, NULL, NULL, 'madera', NULL, NULL, '2017-12-15', NULL, 1, 1, 1, NULL, 1, NULL, 1, NULL, NULL, NULL, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -210,12 +215,12 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de la tabla `componente`
 --
 ALTER TABLE `componente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
