@@ -243,6 +243,13 @@ app.post("/ingresarComponente", (req, res) => {
 		costos:req.body.costos,	marketing:req.body.marketing,administracion:req.body.administracion,planNegocios:req.body.planNegocios,	certificados:req.body.certificados,
 		excel:req.body.excel,word:req.body.word,powerPoint:req.body.powerPoint,otros:req.body.otros,SolicitudCursos:req.body.SolicitudCursos,
 		fechaRealizada:req.body.fechaRealizada,
+		serigrafia:req.body.serigrafia,
+		patronaje:req.body.patronaje,
+		bordado:req.body.bordado,
+		acabadoMuebles:req.body.acabadoMuebles,
+		inocuidadAlimenticia:req.body.inocuidadAlimenticia,
+		seguridadIndustrial:req.body.seguridadIndustrial,
+		saludOcupacional:req.body.saludOcupacional,
 		fundaempresa:req.body.fundaempresa,
 		licenciaAlcaldia:req.body.licenciaAlcaldia,
 		senasag:req.body.senasag,
@@ -250,7 +257,7 @@ app.post("/ingresarComponente", (req, res) => {
 		cajaSalud:req.body.cajaSalud,
 		nit:req.body.nit,
 		senapi:req.body.senapi,
-		ministerioTrabajo:req.body.ministerioTrabajo,
+		ministerioTrabajo:req.body.ministerioTrabajo,personeriaJuridica:req.body.personeriaJuridica,
 		nombreEmpresa:req.body.nombreEmpresa,municipio:req.body.municipio}
 
 	let sql = `INSERT INTO componente SET ?`;
@@ -317,13 +324,21 @@ app.put("/actualizarUnComponente", (req, res) => {
 		costos:req.body.costos,	marketing:req.body.marketing,administracion:req.body.administracion,planNegocios:req.body.planNegocios,	certificados:req.body.certificados,
 		excel:req.body.excel,word:req.body.word,powerPoint:req.body.powerPoint,otros:req.body.otros,SolicitudCursos:req.body.SolicitudCursos,
 		fechaRealizada:req.body.fechaRealizada,
+		serigrafia:req.body.serigrafia,
+		patronaje:req.body.patronaje,
+		bordado:req.body.bordado,
+		acabadoMuebles:req.body.acabadoMuebles,
+		inocuidadAlimenticia:req.body.inocuidadAlimenticia,
+		seguridadIndustrial:req.body.seguridadIndustrial,
+		saludOcupacional:req.body.saludOcupacional,
+		fundaempresa:req.body.fundaempresa,
 		licenciaAlcaldia:req.body.licenciaAlcaldia,
 		senasag:req.body.senasag,
 		afp:req.body.afp,
 		cajaSalud:req.body.cajaSalud,
 		nit:req.body.nit,
 		senapi:req.body.senapi,
-		ministerioTrabajo:req.body.ministerioTrabajo,
+		ministerioTrabajo:req.body.ministerioTrabajo,personeriaJuridica:req.body.personeriaJuridica,
 		nombreEmpresa:req.body.nombreEmpresa,municipio:req.body.municipio}
 
 	let sql = `UPDATE componente SET ? WHERE codigo = '${req.body.codigo}' `;
