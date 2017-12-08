@@ -128,7 +128,7 @@ app.post("/insertarInscripciones", (req, res) => {
 		zonaEmpresa:req.body.zonaEmpresa,municipioEmpresa:req.body.municipioEmpresa,antiguedad:req.body.antiguedad,actividadPrincipal:req.body.actividadPrincipal,
 		descripcionActividad:req.body.descripcionActividad,cantidadProducida:req.body.cantidadProducida,
 		numOperadores:req.body.numOperarios,varones:req.body.varones,mujeres:req.body.mujeres,fechaInscripcion:req.body.fechaInscripcion,licenciaAlcaldia:req.body.licenciaAlcaldia,
-		senasag:req.body.senasag,afp:req.body.afp,cajaSalud:req.body.cajaSalud,nit:req.body.nit,senapi:req.body.senapi,ninguno:req.body.ninguno,fundaempresa:req.body.fundaempresa,
+		senasag:req.body.senasag,nit:req.body.nit,senapi:req.body.senapi,ninguno:req.body.ninguno,fundaempresa:req.body.fundaempresa,
 		otros:req.body.otros,norma:req.body.norma,detalleNorma:req.body.detalleNorma,aperturaMercado:req.body.aperturaMercado,apolloServFinanciero:req.body.apolloServiciosFinancieron,
 		capaciAsistenciaTecni:req.body.capacitacionAsistenciaTecnica
 	}
@@ -144,28 +144,26 @@ app.post("/insertarInscripciones", (req, res) => {
 });
 
 app.put("/actualizarInscripcion", (req, res) => {
-	//console.log(req.body.codigo);
 	
-	let post = {codigo:req.body.codigo,solicitante:req.body.solicitante,ci:req.body.ci,direccion:req.body.direccion,zona: req.body.zona,municipio:req.body.municipio,
-		celular:req.body.celular,telefono:req.body.telefono,fax:req.body.fax,email:req.body.email,nombreEmpresa:req.body.nombreEmpresa,sociedad:req.body.sociedad,
-		nombreSociedad:req.body.nombreSociedad,direccionEmpresa:req.body.direccionEmpresa,
-		zonaEmpresa:req.body.zonaEmpresa,municipioEmpresa:req.body.municipioEmpresa,antiguedad:req.body.antiguedad,actividadPrincipal:req.body.actividadPrincipal,
-		descripcionActividad:req.body.descripcionActividad,cantidadProducida:req.body.cantidadProducida,
-		numOperadores:req.body.numOperarios,varones:req.body.varones,mujeres:req.body.mujeres,fechaInscripcion:req.body.fechaInscripcion,licenciaAlcaldia:req.body.licenciaAlcaldia,
-		senasag:req.body.senasag,afp:req.body.afp,cajaSalud:req.body.cajaSalud,nit:req.body.nit,senapi:req.body.senapi,ninguno:req.body.ninguno,fundaempresa:req.body.fundaempresa,
-		otros:req.body.otros,norma:req.body.norma,detalleNorma:req.body.detalleNorma,aperturaMercado:req.body.aperturaMercado,apolloServFinanciero:req.body.apolloServiciosFinancieron,
-		capaciAsistenciaTecni:req.body.capacitacionAsistenciaTecnica
-	}
-
-	let sql = `UPDATE inscripcion SET ? WHERE codigo = '${req.body.codigo}' `;
-	let query = db.query(sql, post, (err, result) => {
-		if(err){ 
-			throw err;
-		}	
-		console.log(result);
-		res.send(result);
-	})
-});
+		let post = {codigo:req.body.codigo,solicitante:req.body.solicitante,ci:req.body.ci,direccion:req.body.direccion,zona: req.body.zona,municipio:req.body.municipio,
+			celular:req.body.celular,telefono:req.body.telefono,fax:req.body.fax,email:req.body.email,nombreEmpresa:req.body.nombreEmpresa,sociedad:req.body.sociedad,
+			nombreSociedad:req.body.nombreSociedad,direccionEmpresa:req.body.direccionEmpresa,
+			zonaEmpresa:req.body.zonaEmpresa,municipioEmpresa:req.body.municipioEmpresa,antiguedad:req.body.antiguedad,actividadPrincipal:req.body.actividadPrincipal,
+			descripcionActividad:req.body.descripcionActividad,cantidadProducida:req.body.cantidadProducida,
+			numOperadores:req.body.numOperarios,varones:req.body.varones,mujeres:req.body.mujeres,fechaInscripcion:req.body.fechaInscripcion,licenciaAlcaldia:req.body.licenciaAlcaldia,
+			senasag:req.body.senasag,nit:req.body.nit,senapi:req.body.senapi,ninguno:req.body.ninguno,fundaempresa:req.body.fundaempresa,
+			otros:req.body.otros,norma:req.body.norma,detalleNorma:req.body.detalleNorma,aperturaMercado:req.body.aperturaMercado,apolloServFinanciero:req.body.apolloServiciosFinancieron,
+			capaciAsistenciaTecni:req.body.capacitacionAsistenciaTecnica}
+	
+		let sql = `UPDATE inscripcion SET ? WHERE codigo = '${req.body.codigo}' `;
+		let query = db.query(sql, post, (err, result) => {
+			if(err){ 
+				throw err;
+			}	
+			console.log(result);
+			res.send(result);
+		})
+	});
 
 app.get("/searchAllNames", (req, res) => {
 	let sql = `SELECT solicitante FROM inscripcion `;
@@ -253,8 +251,6 @@ app.post("/ingresarComponente", (req, res) => {
 		fundaempresa:req.body.fundaempresa,
 		licenciaAlcaldia:req.body.licenciaAlcaldia,
 		senasag:req.body.senasag,
-		afp:req.body.afp,
-		cajaSalud:req.body.cajaSalud,
 		nit:req.body.nit,
 		senapi:req.body.senapi,
 		ministerioTrabajo:req.body.ministerioTrabajo,personeriaJuridica:req.body.personeriaJuridica,
@@ -334,8 +330,6 @@ app.put("/actualizarUnComponente", (req, res) => {
 		fundaempresa:req.body.fundaempresa,
 		licenciaAlcaldia:req.body.licenciaAlcaldia,
 		senasag:req.body.senasag,
-		afp:req.body.afp,
-		cajaSalud:req.body.cajaSalud,
 		nit:req.body.nit,
 		senapi:req.body.senapi,
 		ministerioTrabajo:req.body.ministerioTrabajo,personeriaJuridica:req.body.personeriaJuridica,
@@ -362,7 +356,7 @@ app.get("/mostrarFormalizacion",(req,res)=>{
 })
 
 app.delete("/deleteComponenteItem/:id", (req, res) => {
-	let sql = `DELETE FROM componente WHERE id = '${req.params.id}'`;
+	let sql = `DELETE FROM componente WHERE codigo = '${req.params.id}'`;
 	let query = db.query(sql, (err, result) => {
 			if(err){
 				throw err;
@@ -378,7 +372,7 @@ app.put("/actualizarInscripcionEditadas", (req, res) => {
 		municipio:req.body.municipio,nombreEmpresa:req.body.nombreEmpresa,
 		componente1:req.body.componente1,componente2:req.body.componente2,componente3:req.body.componente3,          
 		licenciaAlcaldia:req.body.licenciaAlcaldia,fundaempresa:req.body.fundaempresa,nit:req.body.nit,
-		senasag:req.body.senasag,afp:req.body.afp,senapi:req.body.senapi,cajaSalud:req.body.cajaSalud
+		senasag:req.body.senasag,senapi:req.body.senapi
 	}
 
 	let sql = `UPDATE componente SET ? WHERE codigo = '${req.body.codigo}' `;
